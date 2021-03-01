@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t michael-knight/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true michael-knight/docker-react npm run test -- --coverage
+
+language: generic 
